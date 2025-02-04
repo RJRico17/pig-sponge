@@ -26,15 +26,27 @@ public class Pig {
 
     // Implement your solution here!
     public static String pigLatin(String sentence) {
-        return null;
+        String newSentence = "";
+        String[] words = sentence.split(" ");
+        for (String currentWord : words) {
+            newSentence += convertPigLatin(currentWord) + " ";
+        }
+        newSentence = newSentence.substring(0,newSentence.length()-1);
+        return newSentence;
     }
 
-
-
-
-
-
-
+    public static String convertPigLatin(String word) {
+        char[] vowels = {'a','e','i','o','u'};
+        String result = "";
+        for (int i=0; i < vowels.length; i++) {
+            if (word.charAt(0) == vowels[i]){
+                result = word;
+                return result;
+            }
+        }
+        result += word.substring(1) + word.charAt(0) + "ay";
+        return result;
+    }
 
 
     // Method to help with testing, you do not need to read this.
