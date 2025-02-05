@@ -33,10 +33,29 @@ public class Sponge {
 
   // Implement your solution here!
   public static String spongeCase(String sentence) {
-    return null;
+    String newSentence = "";
+    String[] words = sentence.split(" ");
+    for (String currentWord : words) {
+      newSentence += wordSponge(currentWord);
+      newSentence += " ";
+    }
+    newSentence = newSentence.substring(0,newSentence.length()-1);
+    return newSentence;
   }
 
-
+  public static String wordSponge(String word) {
+    String result = "";
+    char[] charArr = word.toCharArray();
+    for (int i=0;i<charArr.length;i++) {
+      if (i%2==1) {
+        result += Character.toUpperCase(charArr[i]);
+      }
+      else {
+        result += Character.toLowerCase(charArr[i]);
+      }
+    }
+    return result;
+  }
   // Method to help with testing, you do not need to read this.
   public static void assertEqual(int testNumber, String actual, String expected) {
     if (!expected.equals(actual)) {
